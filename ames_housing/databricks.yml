@@ -242,6 +242,9 @@ targets:
         developer: ${var.tags_developer}
         RemoveAfter: ${var.tags_RemoveAfter}
         env: ${bundle.target}
+    git: 
+      origin_url: https://github.com/mkgs-databricks-demos/dsAgent.git
+      branch: main
     workspace:
       host: https://dbc-db1e04b1-be64.cloud.databricks.com/
       root_path: /Workspace/${bundle.target}/.bundle/${bundle.name}/${bundle.target}
@@ -250,9 +253,6 @@ targets:
         level: CAN_MANAGE
       - group_name: users
         level: CAN_VIEW
-    git: 
-      origin_url: https://github.com/mkgs-databricks-demos/dsAgent.git
-      branch: mg-dab-workshop
     variables:
       catalog: main
       schema: ames_housing
@@ -278,6 +278,9 @@ targets:
         developer: ${var.tags_developer}
         RemoveAfter: ${var.tags_RemoveAfter}
         env: ${bundle.target}
+    git: 
+      origin_url: https://github.com/mkgs-databricks-demos/dsAgent.git
+      branch: uat
     workspace:
       host: https://dbc-db1e04b1-be64.cloud.databricks.com/
       root_path: /Workspace/${bundle.target}/.bundle/${bundle.name}/${bundle.target}
@@ -310,6 +313,9 @@ targets:
         developer: ${var.tags_developer}
         RemoveAfter: ${var.tags_RemoveAfter}
         env: ${bundle.target}
+    git: 
+      origin_url: https://github.com/mkgs-databricks-demos/dsAgent.git
+      branch: prod
     workspace:
       host: https://dbc-db1e04b1-be64.cloud.databricks.com/
       root_path: /Workspace/${bundle.target}/.bundle/${bundle.name}/${bundle.target}
