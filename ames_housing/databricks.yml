@@ -218,7 +218,7 @@ targets:
       - group_name: users
         level: CAN_VIEW
     variables:
-      catalog: workshop_${bundle.target}
+      catalog: workshop_dev
       schema: ames_housing
       ml_model_name: house_price_prediction
       notifications: []
@@ -229,7 +229,7 @@ targets:
   workshop_test:
     mode: production
     presets:
-      name_prefix: '[${bundle.target}] '
+      name_prefix: '[${bundle.target} ${workspace.current_user.short_name}] '
       source_linked_deployment: false
       trigger_pause_status: PAUSED
       jobs_max_concurrent_runs: 1
@@ -247,7 +247,7 @@ targets:
       branch: main
     workspace:
       host: https://dbc-db1e04b1-be64.cloud.databricks.com/
-      root_path: /Workspace/test/.bundle/${bundle.name}/${bundle.target}
+      root_path: /Workspace/test/.bundle/${bundle.name}/${bundle.target}/${workspace.current_user.short_name}
     permissions:
       - user_name: matthew.giglia@databricks.com
         level: CAN_MANAGE
@@ -265,7 +265,7 @@ targets:
   workshop_uat:
     mode: production
     presets:
-      name_prefix: '[${bundle.target}] '
+      name_prefix: '[${bundle.target} ${workspace.current_user.short_name}] '
       source_linked_deployment: false
       trigger_pause_status: PAUSED
       jobs_max_concurrent_runs: 1
@@ -283,7 +283,7 @@ targets:
       branch: uat
     workspace:
       host: https://dbc-db1e04b1-be64.cloud.databricks.com/
-      root_path: /Workspace/uat/.bundle/${bundle.name}/${bundle.target}
+      root_path: /Workspace/uat/.bundle/${bundle.name}/${bundle.target}/${workspace.current_user.short_name}
     permissions:
       - user_name: matthew.giglia@databricks.com
         level: CAN_MANAGE
@@ -318,7 +318,7 @@ targets:
       branch: prod
     workspace:
       host: https://dbc-db1e04b1-be64.cloud.databricks.com/
-      root_path: /Workspace/prod/.bundle/${bundle.name}/${bundle.target}
+      root_path: /Workspace/prod/.bundle/${bundle.name}/${bundle.target}/${workspace.current_user.short_name}
     permissions:
       - user_name: matthew.giglia@databricks.com
         level: CAN_MANAGE
