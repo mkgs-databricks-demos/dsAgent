@@ -189,3 +189,39 @@ targets:
       run_as_user_permissions: ["CAN_MANAGE", "CAN_RUN", "CAN_MANAGE_RUN"]
       user_permissions: ["CAN_READ", "CAN_VIEW"]
 
+  dev_workshop:
+    # The default target uses 'mode: development' to create a development copy.
+    # - Deployed resources get prefixed with '[dev my_user_name]'
+    # - Any job schedules and triggers are paused by default.
+    # See also https://docs.databricks.com/dev-tools/bundles/deployment-modes.html.
+    mode: development
+    presets:
+      name_prefix: '[${bundle.target} ${workspace.current_user.short_name}] '
+      source_linked_deployment: true
+      trigger_pause_status: PAUSED
+      jobs_max_concurrent_runs: 1
+      pipelines_development: true
+      tags:
+        parentProject: ${var.tags_parentProject}
+        project: ${var.tags_project}
+        businessUnit: ${var.tags_businessUnit}
+        requestedBy: ${var.tags_requestedBy}
+        developer: ${var.tags_developer}
+        RemoveAfter: ${var.tags_RemoveAfter}
+        env: ${bundle.target}
+    default: true
+    workspace:
+      host: https://dbc-db1e04b1-be64.cloud.databricks.com/
+    permissions:
+      - user_name: adminuser3339355@vocareum.com
+        level: CAN_MANAGE
+      - group_name: users
+        level: CAN_VIEW
+    variables:
+      catalog: workshop
+      schema: ames_housing
+      ml_model_name: house_price_prediction
+      notifications: []
+      run_as_user: adminuser3339355@vocareum.com
+      run_as_user_permissions: ["CAN_MANAGE", "CAN_RUN", "CAN_MANAGE_RUN"]
+      user_permissions: ["CAN_READ", "CAN_VIEW"]
