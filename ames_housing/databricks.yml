@@ -76,14 +76,14 @@ targets:
         env: ${bundle.target}
     default: true
     workspace:
-      host: https://dbc-e5684c0a-20fa.cloud.databricks.com
+      host: https://fe-vm-mkgs-databricks-demos.cloud.databricks.com/
     permissions:
       - user_name: matthew.giglia@databricks.com
         level: CAN_MANAGE
       - group_name: users
         level: CAN_VIEW
     variables:
-      catalog: main
+      catalog: mkgs_dev
       schema: ames_housing
       ml_model_name: house_price_prediction
       notifications: []
